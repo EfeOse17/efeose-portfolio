@@ -45,3 +45,31 @@ navLinks.forEach(function(link) {
         menuToggle.setAttribute('aria-label', 'Open navigation menu');
     })
 })
+
+
+// ==============================
+// SCROLL REVEAL ANIMATIONS
+// ==============================
+
+const animatedElements = document.querySelectorAll(
+    '#Portfolio, #Applications, #About, #Services, #Contact'
+);
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+        }
+
+    });
+
+}, {
+    threshold: 0.05
+});
+
+animatedElements.forEach(element => {
+    observer.observe(element);
+});
